@@ -1,5 +1,7 @@
 # QPIT-SQZsim
 
+![LO scan](docs/assets/lo_scan.gif)
+
 QPIT-SQZsim is a simulation framework for designing and analyzing optical parametric oscillators (OPOs), with a focus on cavity design, nonlinear crystal operation, and below-threshold squeezing performance.
 
 The project is structured as a modular pipeline:
