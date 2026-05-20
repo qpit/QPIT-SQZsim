@@ -5,8 +5,8 @@ from __future__ import annotations
 import numpy as np
 import matplotlib.pyplot as plt
 
-from common.constants import PI
-from cavity_analysis import beam_waist_from_q
+from ..common.constants import PI
+from .cavity_analysis import beam_waist_from_q
 
 
 def _resolve_plot_radii(radius_of_curvature=None, radius_of_curvature_1=None, radius_of_curvature_2=None):

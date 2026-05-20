@@ -10,16 +10,16 @@ from typing import Any
 import numpy as np
 
 try:
-    from common.constants import TWO_PI
-    from common.results_paths import ensure_geometry_results_subdirs, get_cavity_results_dir
+    from ..common.constants import TWO_PI
+    from ..common.results_paths import ensure_geometry_results_subdirs, get_cavity_results_dir
 except ImportError:
     import sys
 
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-    from common.constants import TWO_PI
-    from common.results_paths import ensure_geometry_results_subdirs, get_cavity_results_dir
+    from ..common.constants import TWO_PI
+    from ..common.results_paths import ensure_geometry_results_subdirs, get_cavity_results_dir
 
-from cavity_analysis import (
+from .cavity_analysis import (
     beam_waist_from_q,
     compute_decay_rates,
     fsr_from_roundtrip_length,
@@ -29,7 +29,7 @@ from cavity_analysis import (
     optical_roundtrip_length,
     resolve_resonant_loss_model,
 )
-from cavity_plotter import print_geometry_ascii
+from .cavity_plotter import print_geometry_ascii
 
 
 _GEOMETRY_ERROR = "GEOMETRY must be 'bowtie', 'linear', 'triangle', 'hemilithic', or 'monolithic'"
