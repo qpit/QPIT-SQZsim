@@ -26,9 +26,9 @@ for _path in (str(_HERE), str(_SRC_ROOT)):
     if _path not in sys.path:
         sys.path.insert(0, _path)
 
-from common.constants import C_M_PER_S, DEG_TO_RAD
-from cavity_plotter import CavityPlotter
-from cavity_workflow import (
+from ..common.constants import C_M_PER_S, DEG_TO_RAD
+from .cavity_plotter import CavityPlotter
+from .cavity_workflow import (
     build_cavity_context,
     build_cavity_simulation_output,
     build_cavity_simulation_result,
