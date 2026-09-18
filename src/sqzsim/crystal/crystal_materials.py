@@ -362,6 +362,14 @@ _PHASE_MATCHING_CONFIGS: dict[str, PhaseMatchingConfiguration] = {
         signal_axis="y",
         idler_axis="z",
     ),
+    # For pumping along the y-axis, the signal/idler axes are swapped relative to the
+    # previous configuration.
+    "type_ii_y": PhaseMatchingConfiguration(
+            phase_matching_type="type_II_y",
+            pump_axis="y",
+            signal_axis="y",
+            idler_axis="z",
+        ),
 }
 
 _COMMON_DEFF_NOTES = (
@@ -374,6 +382,7 @@ _COMMON_DEFF_BY_TYPE_PM_PER_V: dict[str, float] = {
     "type_0": 16.9,
     "type_i": 3.64,
     "type_ii": 3.64,
+    "type_ii_y": 3.64,
 }
 
 _EFFECTIVE_NONLINEARITY_CONFIGS: dict[str, dict[str, float]] = {
