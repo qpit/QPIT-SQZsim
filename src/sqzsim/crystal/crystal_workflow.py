@@ -49,12 +49,13 @@ _CRYSTAL_LENGTH_MATCH_TOLERANCE_M = 1e-9
 _INTERNAL_DEFAULTS: dict[str, Any] = {
     "cavity_output_path": None,
     "enable_double_resonance_scan": True,
-    "double_resonance_t_min_K": 315.0,
-    "double_resonance_t_max_K": 320.0,
-    "double_resonance_n_T": 201,
+    "double_resonance_t_min_K": 300.0,
+    "double_resonance_t_max_K": 340.0,
+    "double_resonance_n_T": 801,
     "double_resonance_l_min_m": 4.0e-3,
     "double_resonance_l_max_m": 4.2e-3,
-    "double_resonance_n_L": 161,
+    "double_resonance_n_L": 201,
+    "double_resonance_l_half_window_m": 25e-6,
 }
 
 
@@ -710,8 +711,9 @@ def _compute_operating_point_block(
 
     double_resonance_scan = None
     if cfg["enable_double_resonance_scan"]:
-        crystal_length_min_m = 0.8 * float(context.crystal_length_m)
-        crystal_length_max_m = 1.2 * float(context.crystal_length_m)
+        half_window_m = float(_INTERNAL_DEFAULTS["double_resonance_l_half_window_m"])
+        crystal_length_min_m = float(context.crystal_length_m) - half_window_m
+        crystal_length_max_m = float(context.crystal_length_m) + half_window_m
 
         double_resonance_scan = compute_double_resonance_scan(
             cavity_data=context.cavity_data,
