@@ -258,14 +258,14 @@ class CavityAbcdBuilder:
         """
         validate_nonnegative(air_gap, "air_gap")
         return Abcd.chain(
-            Abcd.propagation(air_gap),
             Abcd.planar_interface(1, refractive_index),
+            Abcd.propagation(air_gap),
+            Abcd.mirror(mirror_radius, 0, "tangential"),
+            Abcd.propagation(air_gap),
+            Abcd.planar_interface(refractive_index, 1),
             Abcd.propagation(crystal_length),
             Abcd.mirror(crystal_surface_radius, 0, "tangential"),
             Abcd.propagation(crystal_length),
-            Abcd.planar_interface(refractive_index, 1),
-            Abcd.propagation(air_gap),
-            Abcd.mirror(mirror_radius, 0, "tangential"),
         )
 
     @staticmethod
@@ -279,14 +279,14 @@ class CavityAbcdBuilder:
         """Round-trip matrix for a hemilithic cavity using curvatures."""
         validate_nonnegative(air_gap, "air_gap")
         return Abcd.chain(
-            Abcd.propagation(air_gap),
             Abcd.planar_interface(1, refractive_index),
+            Abcd.propagation(air_gap),
+            Abcd.mirror_from_curvature(mirror_curvature, 0, "tangential"),
+            Abcd.propagation(air_gap),
+            Abcd.planar_interface(refractive_index, 1),
             Abcd.propagation(crystal_length),
             Abcd.mirror_from_curvature(crystal_surface_curvature, 0, "tangential"),
             Abcd.propagation(crystal_length),
-            Abcd.planar_interface(refractive_index, 1),
-            Abcd.propagation(air_gap),
-            Abcd.mirror_from_curvature(mirror_curvature, 0, "tangential"),
         )
 
     @staticmethod
